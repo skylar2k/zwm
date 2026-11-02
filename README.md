@@ -60,7 +60,7 @@ separate project: install it too and Mod + P opens it.
 ## Install and first run
 
 ```sh
-git clone <repository-url> zwm
+git clone https://github.com/skylar2k/zwm.git zwm
 cd zwm
 zig build                    # builds zig-out/bin/zwm
 zig-out/bin/zwm              # run it
