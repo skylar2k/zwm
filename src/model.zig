@@ -317,9 +317,9 @@ pub const WindowAttrs = struct {
 /// Apps for which a window not on the ordinary layer is an overlay or panel,
 /// not a window (AeroSpace's list of cases found in the wild).
 const layer_checked_apps = [_][]const u8{
-    "com.tinyspeck.slackmacgap", "com.google.Chrome",   "org.mozilla.firefox", "org.mozilla.nightly",
-    "app.zen-browser",           "com.brave.Browser",   "com.timpler.screenstudio", "pl.maketheweb.cleanshotx",
-    "com.googlecode.iterm2",     "com.microsoft.Outlook", "com.openai.codex", "com.electron.wispr-flow",
+    "com.tinyspeck.slackmacgap", "com.google.Chrome",     "org.mozilla.firefox",      "org.mozilla.nightly",
+    "app.zen-browser",           "com.brave.Browser",     "com.timpler.screenstudio", "pl.maketheweb.cleanshotx",
+    "com.googlecode.iterm2",     "com.microsoft.Outlook", "com.openai.codex",         "com.electron.wispr-flow",
 };
 
 /// Does `classify` want the window layer for this app? (Reading it costs a call.)
@@ -386,9 +386,19 @@ pub fn isTabSwap(vanished: usize, appeared: usize) bool {
 
 fn attrs(id: []const u8, subrole: Subrole) WindowAttrs {
     return .{
-        .bundle_id = id, .title = "", .identifier = "", .subrole = subrole, .size_settable = true,
-        .has_close = true, .has_fullscreen = true, .has_zoom = true, .has_minimize = true,
-        .close_enabled = true, .fullscreen_enabled = true, .minimize_enabled = true, .active = false,
+        .bundle_id = id,
+        .title = "",
+        .identifier = "",
+        .subrole = subrole,
+        .size_settable = true,
+        .has_close = true,
+        .has_fullscreen = true,
+        .has_zoom = true,
+        .has_minimize = true,
+        .close_enabled = true,
+        .fullscreen_enabled = true,
+        .minimize_enabled = true,
+        .active = false,
     };
 }
 
@@ -483,9 +493,9 @@ test "a tab switch is one window gone and one appeared" {
 /// ordinary windows: they hide the title bar, or are built that way. Taken from
 /// AeroSpace's list of cases found in the wild.
 const no_fullscreen_button_ok = [_][]const u8{
-    "org.gimp", "com.google.Chrome", "com.apple.ActivityMonitor", "org.alacritty",
-    "net.kovidgoyal.kitty", "com.github.wez.wezterm", "org.qutebrowser", "com.googlecode.iterm2",
-    "org.gnu.Emacs", "com.microsoft.VSCode", "com.vscodium", "com.valvesoftware.steam",
+    "org.gimp",             "com.google.Chrome",      "com.apple.ActivityMonitor", "org.alacritty",
+    "net.kovidgoyal.kitty", "com.github.wez.wezterm", "org.qutebrowser",           "com.googlecode.iterm2",
+    "org.gnu.Emacs",        "com.microsoft.VSCode",   "com.vscodium",              "com.valvesoftware.steam",
 };
 
 /// A standard window that is not meant to be big floats: settings panes, "About"
@@ -717,6 +727,8 @@ test "every tag has its own layout" {
     var m = testMonitor();
     const tile = layoutIndex("tile").?;
     const monocle = layoutIndex("monocle").?;
+
+    try std.testing.expect(m.setLayout(tile)); // tag 1 -> tile
     try std.testing.expectEqual(tile, m.settings().layout);
 
     try std.testing.expect(m.setLayout(monocle)); // tag 1 -> monocle
@@ -773,6 +785,7 @@ test "last layout swaps back and forth" {
     var m = testMonitor();
     const monocle = layoutIndex("monocle").?;
     const tile = layoutIndex("tile").?;
+    _ = m.setLayout(tile);
     _ = m.setLayout(monocle);
     try std.testing.expect(m.lastLayout());
     try std.testing.expectEqual(tile, m.settings().layout);
