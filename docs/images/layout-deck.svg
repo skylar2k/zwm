@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" width="560" height="380" role="img" aria-label="deck layout with 4 windows">
+<rect width="560" height="380" rx="14" fill="#0b1220"/>
+<text x="24" y="34" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="18" font-weight="600" fill="#e5e7eb">deck</text>
+<text x="536" y="34" text-anchor="end" font-family="Menlo,monospace" font-size="16" fill="#93c5fd">[3]</text>
+<g transform="translate(24,52)"><rect width="512" height="304" rx="6" fill="#111827" stroke="#1f2937"/>
+<rect x="319.5" y="25.6" width="189.4" height="278.5" rx="5" fill="#3f4d63" stroke="#0b1220" stroke-width="1.5"/>
+<text x="502.9" y="301.1" text-anchor="end" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">4</text>
+<rect x="302.1" y="14.3" width="189.4" height="278.5" rx="5" fill="#52627a" stroke="#0b1220" stroke-width="1.5"/>
+<text x="485.5" y="289.9" text-anchor="end" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">3</text>
+<rect x="284.7" y="3.1" width="189.4" height="278.5" rx="5" fill="#64748b" stroke="#0b1220" stroke-width="1.5"/>
+<text x="379.4" y="149.3" text-anchor="middle" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="20" font-weight="600" fill="#f8fafc">2</text>
+<rect x="3.1" y="3.1" width="275.5" height="301.1" rx="5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5"/>
+<text x="140.8" y="160.6" text-anchor="middle" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="20" font-weight="600" fill="#f8fafc">1</text>
+</g></svg>

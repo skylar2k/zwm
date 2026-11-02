@@ -1,0 +1,168 @@
+THIRD-PARTY NOTICES
+==============================================================================
+
+zwm is licensed under the GNU General Public License, version 3 (see the file
+LICENSE). It contains code derived from, and is built with, the software listed
+below, which is licensed under the permissive terms reproduced in full after
+each entry. Those licenses are compatible with the GPL; their copyright and
+permission notices must stay with the code they cover.
+
+
+1. dwm  -  https://dwm.suckless.org/
+==============================================================================
+
+What is derived from it:
+
+  * The layout algorithms in src/layouts.zig: tile, monocle, centeredmaster
+    and deck, ported to Zig from dwm's C code (config.def.h and dwm.c).
+  * The ideas behind the program: tags, master/stack layouts, monitors, and a
+    configuration that is compiled into the program.
+  * The centeredmaster layout comes from the dwm "centeredmaster" patch
+    (suckless.org patch page; credited there to Laslo Hunhold).
+  * The deck layout comes from the dwm "deck" patch (suckless.org, version
+    dwm-deck-6.2 by Jack Bird).
+
+The patches are modifications of dwm and fall under dwm's license:
+
+MIT/X Consortium License
+
+© 2010-2026 Hiltjo Posthuma <hiltjo@codemadness.org>
+© 2006-2019 Anselm R Garbe <anselm@garbe.ca>
+© 2006-2009 Jukka Salmi <jukka at salmi dot ch>
+© 2006-2007 Sander van Dijk <a dot h dot vandijk at gmail dot com>
+© 2007-2011 Peter Hartlich <sgkkr at hartlich dot com>
+© 2007-2009 Szabolcs Nagy <nszabolcs at gmail dot com>
+© 2007-2009 Christof Musik <christof at sendfax dot de>
+© 2007-2009 Premysl Hruby <dfenze at gmail dot com>
+© 2007-2008 Enno Gottox Boland <gottox at s01 dot de>
+© 2008 Martin Hurton <martin dot hurton at gmail dot com>
+© 2008 Neale Pickett <neale dot woozle dot org>
+© 2009 Mate Nagy <mnagy at port70 dot net>
+© 2010-2012 Connor Lane Smith <cls@lubutu.com>
+© 2011 Christoph Lohmann <20h@r-36.net>
+© 2015-2016 Quentin Rameau <quinq@fifth.space>
+© 2015-2016 Eric Pruitt <eric.pruitt@gmail.com>
+© 2016-2017 Markus Teich <markus.teich@stusta.mhn.de>
+© 2020-2022 Chris Down <chris@chrisdown.name>
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+2. The Zig standard library  -  https://ziglang.org/
+==============================================================================
+
+Parts of the Zig standard library are compiled into the zwm
+program (collections, formatting, and so on).
+
+The MIT License (Expat)
+
+Copyright (c) Zig contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+3. AeroSpace  -  https://github.com/nikitabobko/AeroSpace  (MIT, (c) 2023 Nikita Bobko)
+==============================================================================
+
+What is derived from it:
+
+  * The rules for telling real windows from popups, and which windows float
+    (`classify`, `isPopup` and `floatsByDefault` in src/model.zig), including
+    its lists of applications and the cases they were found for, are ported
+    from AeroSpace's `AxUiElementWindowType.swift` (isWindowHeuristic and
+    isDialogHeuristic).
+  * The native-tab switch detection (`isTabSwap`, and its use in src/wm.zig)
+    follows AeroSpace's `nonidempotentNativeTabSwapHeuristic`.
+  * The idea of treating the lock screen as a reason to pause, and of keeping a
+    memory of lost windows, comes from AeroSpace's closed-windows cache.
+  * Otherwise it was studied as a reference for how to manage windows on macOS
+    (parking windows off-screen, finding the focused window, which
+    Accessibility calls to use).
+
+AeroSpace's license:
+
+MIT License
+
+Copyright (c) 2023 Nikita Bobko
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+4. zig-objc  -  https://github.com/mitchellh/zig-objc  (MIT, (c) 2023 Mitchell Hashimoto)
+==============================================================================
+
+zwm is built with this library, which sends the Objective-C messages
+(src/cocoa.zig and the AppKit code use it). It is fetched when zwm is built, as
+build.zig.zon says, and its code is part of the resulting programs.
+
+zig-objc's license:
+
+MIT License
+
+Copyright (c) 2023 Mitchell Hashimoto
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
