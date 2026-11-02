@@ -59,6 +59,8 @@ pub const Info = struct {
     view: u32, // tags shown (bitmask)
     occupied: u32, // tags that hold at least one window (bitmask)
     symbol: []const u8, // layout symbol of the shown tag
+    selmon: usize, // the currently selected monitor
+    nmons: usize, // count of monitors connected
 };
 
 /// Redraw for the selected monitor.
@@ -70,6 +72,17 @@ pub fn update(info: Info) void {
     const Span = struct { start: usize, len: usize, selected: bool, empty: bool };
     var spans: [config.tags.len]Span = undefined;
     var utf16_pos: usize = 0;
+
+    // If we have multiple monitors, display the currently selected one like: [selmon]
+    if (info.nmons > 1) {
+        var num: [16]u8 = undefined;
+        const mon_prefix = std.fmt.bufPrint(&num, "[{d}] ", .{
+            info.selmon,
+        }) catch "";
+
+        len = append(&text, len, mon_prefix);
+        utf16_pos += mon_prefix.len;
+    }
 
     inline for (config.tags, 0..) |t, i| {
         const tag = t.name;

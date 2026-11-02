@@ -382,7 +382,7 @@ pub fn refreshBar() void {
     }
     var buf: [24]u8 = undefined;
     const symbol = m.layout().displaySymbol(count, m.params().nmaster, &buf);
-    bar.update(.{ .view = m.view, .occupied = occupied, .symbol = symbol });
+    bar.update(.{ .view = m.view, .occupied = occupied, .symbol = symbol, .selmon = selmon, .nmons = nmons });
 }
 
 // ----------------------------------------------------------------- focus
@@ -968,7 +968,6 @@ fn doClickMonitor(_: usize) void {
 }
 
 /// Something may have changed anywhere (app launched/quit, Space changed).
-
 /// Something may have changed anywhere (app launched/quit, Space changed).
 /// Batches bursts into one full pass.
 pub fn requestReconcile() void {
