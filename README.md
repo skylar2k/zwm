@@ -4,7 +4,7 @@
 
 Tags instead of workspaces, master/stack layouts, a keyboard-driven workflow, and a
 configuration that is compiled into the program, as in [dwm](https://dwm.suckless.org/).
-It pairs with **zmenu**, a [dmenu](https://tools.suckless.org/dmenu/)-style launcher that is a
+It pairs with **[zmenu](https://github.com/skylar2k/zmenu)**, a [dmenu](https://tools.suckless.org/dmenu/)-style launcher that is a
 separate project: install it too and Mod + P opens it.
 
 <p align="center">
@@ -30,7 +30,7 @@ separate project: install it too and Mod + P opens it.
 - **Sleep, lock and display changes are handled.** It pauses while the machine can't be
   trusted to answer, then re-checks everything on wake.
 - **Floating windows are never raised.** zwm doesn't reorder windows you chose to float.
-- **Works with zmenu,** the dmenu-style menu and app launcher (a separate project): Mod + P.
+- **Works with [zmenu](https://github.com/skylar2k/zmenu),** the dmenu-style menu and app launcher (a separate project): Mod + P.
 - **Small and readable.** About 4,000 lines of Zig (a good part of it comments and tests), with
   unit tests for the logic that doesn't need a screen.
 
@@ -175,17 +175,17 @@ The config is checked while compiling. For example, `.set_layout = "monocel"` fa
 `a key binding uses an unknown layout: monocel`, and two bindings on the same keys fail with
 `two key bindings use the same keys: t`. `config.def.zig` documents every option.
 
-## zmenu
+## [zmenu](https://github.com/skylar2k/zmenu)
 
 The default config binds **Mod + P** to `zmenu -a` (an application launcher) and
-**Mod + Shift + P** to the same in a centered box. zmenu is a separate program, a
+**Mod + Shift + P** to the same in a centered box. [zmenu](https://github.com/skylar2k/zmenu) is a separate program, a
 [dmenu](https://tools.suckless.org/dmenu/)-style menu you can also use on its own and in shell
 scripts. Install it, and put it where zwm can find it: next to the `zwm` program, or in
 `~/.local/bin`, `/opt/homebrew/bin` or `/usr/local/bin` (zwm looks in all of them, also when
 it was started from the app bundle or a login item, which get a minimal `PATH`).
 
 zwm gives every program it starts the variable `ZWM_MONITOR`, the number of the monitor you are
-working on (0 = leftmost), so zmenu opens on the right screen. Without zmenu installed, the two
+working on (0 = leftmost), so [zmenu](https://github.com/skylar2k/zmenu) opens on the right screen. Without [zmenu](https://github.com/skylar2k/zmenu) installed, the two
 bindings simply do nothing; you can bind any other program the same way (see `config.def.zig`).
 
 ## Everyday use
@@ -207,7 +207,7 @@ scripts/login-item.sh install          # optional: start zwm at login
   crash the next start pulls any off-screen window back.
 - Programs that zwm starts get `ZWM_MONITOR` (the monitor you are working on), and a `PATH` that
   starts with zwm's own folder and includes `~/.local/bin`, `/opt/homebrew/bin` and
-  `/usr/local/bin`, so programs installed there are found (see zmenu, above).
+  `/usr/local/bin`, so programs installed there are found (see [zmenu](https://github.com/skylar2k/zmenu), above).
 
 ## Troubleshooting
 
